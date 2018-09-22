@@ -1,25 +1,10 @@
-# Off Board Blink
-Now that we have the whole blinking LED out of the way, why don't we try making things a little more convenient by taking the G2553 off the development board and into a breadboard. In addition to the software, your README needs to also contain a picture of your circuit with at least 2 LEDs blinking all on a breadboard and without a development board. This means that you will need:
-* Proper power being supplied to the processor
-* Proper Reset Circuitry
-* Proper Bypass and Bulk Capacitors as needed
-
-Please be advised that you can easily damage or destroy one of the pins on the MSP430 by applying the wrong voltage or attempting to draw too much current from it. Really check your design before you power up to ensure you do not need request another processor.
-
-## "Do I need to use a power supply to power this thing?"
-In the beginning part of the exercise, I would say that you can use the 5V/3.3V rails built into the development board by running wires. However, I would recommend looking into how to supply the processor from something like a battery or the power supply. You might want to look into different types of regulators. For example, your circuits may be powered off of a battery that is only 1.8V, or on a system that can only supply you with 13V.
-
-## "What about the buttons and resistors and LEDS?"
-You remember those parts bins in the back of the teaching labs? They contain most everything you will need to do this portion of the lab. You should really make a effort to try and replicate what is on those development boards on the breadboard so you can begin to see what is needed to design with a microcontroller. Mess around with different color LEDS and see if they behave the same as the simple Red LEDs.
-
-# YOU NEED TO CREATE THE FOLLOWING FOLDER
-* MSP430G2553
-
-## Extra Work
-Once you get to this point, you are pretty much set in terms of GPIO mastery getting the LEDs to blink, but there are some more exploratory tasks that you can do.
-
-### Off-Board Programming
-Do we need to keep re-inserting the MSP into the development board to program it, or is there some way to keep the chip in the circuit? For starters, try to connect the header which connects the debugger and emulator (that parts that is really dense in parts) to your chip on your board. You will need to look at the datasheets for the MSP430G2553 and the Launchpad itself to see where and how to connect to the programmer. Next, you should really look at using the JTAG connector that is also available on your board.
-
-### UART/Button Control
-Remember that stuff you did a few parts ago? Can you actually get all of that working again off of the development board? Can you control which lights are on, the speed they blink at, etc.
+# Lab 1: Off-Board Blink for MSP430G2
+Tiernan Cuesta |
+Embedded Systems Section 4 |
+September 21, 2018
+# Functionality
+The off-board blink build was executed using the same code as the multi blink build for the G2. Therefore the functionality is the same where the green and red LEDs are both blinking but at different rates.
+# Valid Inputs/Outputs
+The
+# Description of Code
+The two programs are layed out in an almost identical fashion because the expressions themselves need not change because the desired functionality is the same. The subtle differences between the two is the port and pin assignments since they vary from chip to chip. For example, in the FR2311 program the red LED is assigned to Port 2 pin 0, where the red LEDs pin assignment for the G2 is Port 1 pin 6. Throughout the program it is paramount to make sure the assignments are consistent. Now, for these programs there is another k integer in addition to the original i and j integers in the previous builds. The variable k is incremented by the press of the button. When k is incremented the speed of the two blinking LEDs increases. Once k is greater than 2 it is reset back to 0, hence the LEDs went from fast speed back to normal speed after a 1 second delay interval. The delays and toggling of the LEDs was implemented identical to the previous builds. Comments within the hard code have more detailed description of almost every line of code. (besides obvious lines)
