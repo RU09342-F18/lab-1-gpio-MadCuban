@@ -1,7 +1,7 @@
 # Lab 1: Simple Blink for MSP430G2 and MSP432P4 
 Tiernan Cuesta |
 Embedded Systems Section 4 |
-September 21, 2018 |
+September 21, 2018 
 # Functionality
 The two main.c files for the MSP430G2 and MSP432P4 are identical in functionality. Both programs drive a single green LED, both LED's pinout is P1.0. This is a very simple program where the LED's speed can only be adjusted in the code itself, not in realtime. The value of variable 'i' is inversely proportional to the speed of the LED.
 # Valid Inputs/Outputs
