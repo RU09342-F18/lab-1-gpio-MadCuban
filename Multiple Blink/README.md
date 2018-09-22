@@ -1,22 +1,10 @@
-# Multiple Blink
-Now that we have blinked at least 1 LED, what about blinking multiple LEDS at the same time? The minimum that you need to develop is blinking at least two LEDs at two different rates. Although I am not going to give you a speed, you should probably pick a rate which is visible to a standard human. I really hope that you take this further and perform some of the extra work for this part of the lab exercise.
-
-
-# YOU NEED TO CREATE THE FOLLOWING FOLDERS
-* MSP430G2553
-* MSP(FILL IN WITH WHAT YOU ARE USING)
-
-## README
-Remember to replace this README with your README once you are ready to submit. I would recommend either making a copy of this file or taking a screen shot. There might be a copy of all of these README's in a folder on the top level depending on the exercise.
-
-## Extra Work
-When you take a look at the development boards, you are limited to what is built into the platform.
-
-### Even More LEDs
-Since up to this point you should have hopefully noticed that you are simply just controlling each pin on your processor. So... what is keeping you from putting an LED on each pin? Can you actually control the speed of each of these LEDs?
-
-### Patterned Lights
-If you can control a ton of LEDs, what is keeping you from having a little fun? Why not try and make something like a moving face or other moving object in lights. *CAUTION* I would only do this if you have finished the rest of the lab.
-
-### UART Pattern Control
-If you have been using UART, could you set which LEDs are on or off based off some UART command? Would you want to send an Array over UART such as [1 0 1 0] or would you want to send a byte that corresponds to the status? Can you not only say which LEDs are on, but also tell them to blink at a particular rate if they were on (so LED1 Blink every 100ms)?
+# Lab 1: Multi Blink for MSP430G2 and MSP430F5529
+Tiernan Cuesta //
+Embedded Systems Section 4 //
+September 21, 2018 //
+# Functionality
+The two main.c files for the MSP430G2 and MSP430F5529 are identical in functionality. Both programs drive two LEDs, one green LED and one red LED. Each LED is meant to be driven at different speeds. For this, two variables were used, i and j to control the two seperate LEDs.  
+# Valid Inputs/Outputs
+For these programs there are no inputs, only in that you can internally condition of the if-statements to change the speed of the toggling. Valid outputs are P1.0 = 0 or P1.0 = 1 for both of the chips. In the case that P1.0 = 0 the LED is switched off, and in the case that P1.0 = 1 the LED is turned on. The same holds true for the cooresponding red LED pinouts.
+# Description of Code
+The two programs are layed out in an almost identical fashion because the expressions themselves need not change because the desired functionality is the same. The subtle differences between the two is the port and pin assignments since they vary from chip to chip. For example, in the F5 program the red LED is assigned to Port 4 pin 7, where the red LEDs pin assignment for the G2 is Port 1 pin 7. Throughout the program it is paramount to make sure the assignments are consistent. Now, each toggling of the LED's are done with if statements that only executes if i or j is greater than the specified value in the condition. After the two LED's are toggled i and j are reset back to 0 to resume counting again.
