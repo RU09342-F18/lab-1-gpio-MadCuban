@@ -1,18 +1,10 @@
-# Button Blink
-Now that you have looked at blinking the LED from some built in delay, but what if we wanted to control the state of the LED by a button? You may think "Why would I need a Microcontroller to perform the job of a switch?". And that is where you come in. The bare minimum for this part of the lab is to essentially replicate a switch with your development board.
-
-# YOU NEED TO CREATE THE FOLLOWING FOLDERS
-* MSP430G2553
-* MSP(FILL IN THE PROCESSOR YOU ARE USING)
-
-## README
-Remember to replace this README with your README once you are ready to submit. I would recommend either making a copy of this file or taking a screen shot. There might be a copy of all of these README's in a folder on the top level depending on the exercise. Make sure you talk about how your button is configured (momentary or continuous. Normally open or closed. Does the button press indicate when the LED should be on or off.)
-
-## Extra Work
-What can we do to make this a little bit more worthy of needing a microcontroller.
-
-### Button Based Speed Control
-Much like the UART controlled speed, what if you could cycle between speeds based on a button press? The speed could progress through a cycle of "Off-Slow-Medium-Fast" looping back when you hit the end.
-
-### Color Change
-What if upon a button press, the LED which was blinking changed. Some of the development boards contain two LEDs, so you could swap between a Red and a Green LED.
+# Lab 1: Button Blink for MSP430G2 and MSP430FR2311
+Tiernan Cuesta |
+Embedded Systems Section 4 |
+September 21, 2018
+# Functionality
+The two main.c files for the MSP430G2 and MSP430FR2331 are in functionality. Both programs drive two LEDs, one green LED and one red LED. Each LED is meant to be driven at different speeds. For this, two variables were used, i and j to control the two seperate LEDs. The speed of both LEDs are capable of being changed. There are 3 speed settings, normal, medium, and fast speeds. A button on the board will control the cycling of these speeds. After each button press the program stalls for 1 second before moving on to the next instruction in attempt to mitigate unwanted cycling of speed settings. 
+# Valid Inputs/Outputs
+The only real-time input compatible with both codes are their coorsponding buttons, button P1.3 and P1.1 for the MSP430G2 and the MSP430FR2311 respectively. These inputs are used for speed control. Other parameters for speed can be changed within the hard code. The only expected outputs are the respective to LEDs blinking at the set rate.
+# Description of Code
+The two programs are layed out in an almost identical fashion because the expressions themselves need not change because the desired functionality is the same. The subtle differences between the two is the port and pin assignments since they vary from chip to chip. For example, in the FR2311 program the red LED is assigned to Port 2 pin 0, where the red LEDs pin assignment for the G2 is Port 1 pin 6. Throughout the program it is paramount to make sure the assignments are consistent. Now, for these programs there is another k integer in addition to the original i and j integers in the previous builds. The variable k is incremented by the press of the button. When k is incremented the speed of the two blinking LEDs increases. Once k is greater than 2 it is reset back to 0, hence the LEDs went from fast speed back to normal speed after a 1 second delay interval. The delays and toggling of the LEDs was implemented identical to the previous builds. Comments within the hard code have more detailed description of almost every line of code. (besides obvious lines)
